@@ -1,7 +1,10 @@
+// backend/src/services/llmExplainer.js
 const OpenAI = require("openai");
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+// Pointing the standard OpenAI client to Groq's API endpoint
+const groq = new OpenAI({
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
 });
 
 async function getExplanation(scores, rootWeakConceptId, conceptGraph) {
@@ -25,8 +28,8 @@ async function getExplanation(scores, rootWeakConceptId, conceptGraph) {
       }
     `;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o", // Ya jo bhi model tumhari key pe active ho
+    const completion = await groq.chat.completions.create({
+      model: "openai/gpt-oss-120b", // Tere dashboard ke hisaab se exact model
       messages: [
         {
           role: "system",
@@ -40,7 +43,7 @@ async function getExplanation(scores, rootWeakConceptId, conceptGraph) {
 
     return JSON.parse(completion.choices[0].message.content);
   } catch (error) {
-    console.error("LLM Service Error:", error);
+    console.error("Groq LLM Service Error:", error);
     return {
       diagnosis: "Could not generate diagnosis.",
       whyItMatters: "System error.",
