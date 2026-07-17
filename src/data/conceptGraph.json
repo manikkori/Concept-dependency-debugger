@@ -1,0 +1,25 @@
+{
+  "concepts": [
+    { "id": "basic-algebra", "name": "Basic Algebra", "prerequisites": [] },
+    {
+      "id": "factoring",
+      "name": "Factoring",
+      "prerequisites": ["basic-algebra"]
+    },
+    {
+      "id": "quadratic-equations",
+      "name": "Quadratic Equations",
+      "prerequisites": ["factoring"]
+    },
+    {
+      "id": "functions",
+      "name": "Functions & Graphs",
+      "prerequisites": ["quadratic-equations"]
+    },
+    {
+      "id": "limits",
+      "name": "Limits (Intro Calculus)",
+      "prerequisites": ["functions"]
+    }
+  ]
+}

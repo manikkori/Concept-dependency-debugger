@@ -1,0 +1,74 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "conceptId": "basic-algebra",
+      "text": "Solve for x: 3x - 7 = 14",
+      "options": ["x = 5", "x = 7", "x = 21", "x = 4"],
+      "correctAnswer": "x = 7"
+    },
+    {
+      "id": "q2",
+      "conceptId": "basic-algebra",
+      "text": "Simplify: 2(x + 4) - 3",
+      "options": ["2x + 1", "2x + 5", "2x + 8", "x + 5"],
+      "correctAnswer": "2x + 5"
+    },
+    {
+      "id": "q3",
+      "conceptId": "factoring",
+      "text": "Factor completely: x² + 5x + 6",
+      "options": ["(x+2)(x+3)", "(x-2)(x-3)", "(x+1)(x+6)", "(x+6)(x-1)"],
+      "correctAnswer": "(x+2)(x+3)"
+    },
+    {
+      "id": "q4",
+      "conceptId": "factoring",
+      "text": "Factor: x² - 16",
+      "options": ["(x-4)(x-4)", "(x+4)(x-4)", "(x-8)(x+2)", "x(x-16)"],
+      "correctAnswer": "(x+4)(x-4)"
+    },
+    {
+      "id": "q5",
+      "conceptId": "quadratic-equations",
+      "text": "What are the roots of x² - 4x = 0?",
+      "options": ["x=0, x=4", "x=2, x=-2", "x=4", "x=0, x=-4"],
+      "correctAnswer": "x=0, x=4"
+    },
+    {
+      "id": "q6",
+      "conceptId": "quadratic-equations",
+      "text": "Solve: x² = 25",
+      "options": ["x=5", "x=-5", "x=5, x=-5", "x=25"],
+      "correctAnswer": "x=5, x=-5"
+    },
+    {
+      "id": "q7",
+      "conceptId": "functions",
+      "text": "If f(x) = 2x² - 3, what is f(2)?",
+      "options": ["1", "5", "8", "11"],
+      "correctAnswer": "5"
+    },
+    {
+      "id": "q8",
+      "conceptId": "functions",
+      "text": "Which of these represents a linear function?",
+      "options": ["y = x² + 2", "y = 3x - 1", "y = 1/x", "y = |x|"],
+      "correctAnswer": "y = 3x - 1"
+    },
+    {
+      "id": "q9",
+      "conceptId": "limits",
+      "text": "Find the limit of (3x) as x approaches 2.",
+      "options": ["5", "6", "9", "Undefined"],
+      "correctAnswer": "6"
+    },
+    {
+      "id": "q10",
+      "conceptId": "limits",
+      "text": "What is the limit of a constant 'c' as x approaches any number?",
+      "options": ["0", "Infinity", "c", "x"],
+      "correctAnswer": "c"
+    }
+  ]
+}
