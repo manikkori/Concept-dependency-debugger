@@ -1,0 +1,29 @@
+{
+  "concepts": [
+    {
+      "id": "classes-objects",
+      "name": "Classes & Objects",
+      "prerequisites": []
+    },
+    {
+      "id": "encapsulation",
+      "name": "Encapsulation",
+      "prerequisites": ["classes-objects"]
+    },
+    {
+      "id": "inheritance",
+      "name": "Inheritance",
+      "prerequisites": ["encapsulation"]
+    },
+    {
+      "id": "polymorphism",
+      "name": "Polymorphism",
+      "prerequisites": ["inheritance"]
+    },
+    {
+      "id": "abstraction",
+      "name": "Abstraction",
+      "prerequisites": ["polymorphism"]
+    }
+  ]
+}

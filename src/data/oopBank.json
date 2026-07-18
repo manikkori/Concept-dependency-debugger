@@ -1,0 +1,104 @@
+{
+  "questions": [
+    {
+      "id": "oop1",
+      "conceptId": "classes-objects",
+      "text": "What is a class in object-oriented programming?",
+      "options": [
+        "A blueprint for creating objects",
+        "A single variable",
+        "A database table only",
+        "A loop statement"
+      ],
+      "correctAnswer": "A blueprint for creating objects"
+    },
+    {
+      "id": "oop2",
+      "conceptId": "classes-objects",
+      "text": "An object is best described as:",
+      "options": [
+        "An instance of a class",
+        "A type of compiler",
+        "A function parameter",
+        "A database query"
+      ],
+      "correctAnswer": "An instance of a class"
+    },
+    {
+      "id": "oop3",
+      "conceptId": "encapsulation",
+      "text": "What is the main purpose of encapsulation?",
+      "options": [
+        "To bundle data and methods and control access to them",
+        "To create many parent classes",
+        "To remove all methods from a class",
+        "To convert code into machine language"
+      ],
+      "correctAnswer": "To bundle data and methods and control access to them"
+    },
+    {
+      "id": "oop4",
+      "conceptId": "encapsulation",
+      "text": "Which access modifier commonly prevents direct access from outside a class?",
+      "options": ["public", "private", "global", "static"],
+      "correctAnswer": "private"
+    },
+    {
+      "id": "oop5",
+      "conceptId": "inheritance",
+      "text": "Inheritance allows a class to:",
+      "options": [
+        "Reuse properties and methods of another class",
+        "Hide every method from users",
+        "Run only one function",
+        "Store data only in arrays"
+      ],
+      "correctAnswer": "Reuse properties and methods of another class"
+    },
+    {
+      "id": "oop6",
+      "conceptId": "inheritance",
+      "text": "In inheritance, the class that provides features to another class is called the:",
+      "options": ["Child class", "Parent class", "Object class", "Local class"],
+      "correctAnswer": "Parent class"
+    },
+    {
+      "id": "oop7",
+      "conceptId": "polymorphism",
+      "text": "Polymorphism lets the same method name:",
+      "options": [
+        "Behave differently for different objects",
+        "Have no return value",
+        "Exist only in one class",
+        "Delete inherited methods"
+      ],
+      "correctAnswer": "Behave differently for different objects"
+    },
+    {
+      "id": "oop8",
+      "conceptId": "polymorphism",
+      "text": "Method overriding is an example of:",
+      "options": ["Encapsulation", "Polymorphism", "Compilation", "Aggregation"],
+      "correctAnswer": "Polymorphism"
+    },
+    {
+      "id": "oop9",
+      "conceptId": "abstraction",
+      "text": "Abstraction focuses on:",
+      "options": [
+        "Showing essential features while hiding implementation details",
+        "Making every field public",
+        "Copying an object exactly",
+        "Removing all classes"
+      ],
+      "correctAnswer": "Showing essential features while hiding implementation details"
+    },
+    {
+      "id": "oop10",
+      "conceptId": "abstraction",
+      "text": "Which construct is commonly used to define an abstract contract for classes?",
+      "options": ["Interface", "Array", "Variable", "Loop"],
+      "correctAnswer": "Interface"
+    }
+  ]
+}

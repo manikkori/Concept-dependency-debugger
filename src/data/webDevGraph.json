@@ -1,0 +1,29 @@
+{
+  "concepts": [
+    {
+      "id": "html-fundamentals",
+      "name": "HTML Fundamentals",
+      "prerequisites": []
+    },
+    {
+      "id": "css-fundamentals",
+      "name": "CSS Fundamentals",
+      "prerequisites": ["html-fundamentals"]
+    },
+    {
+      "id": "javascript-basics",
+      "name": "JavaScript Basics",
+      "prerequisites": ["css-fundamentals"]
+    },
+    {
+      "id": "dom-manipulation",
+      "name": "DOM Manipulation",
+      "prerequisites": ["javascript-basics"]
+    },
+    {
+      "id": "async-js-apis",
+      "name": "Async JS & APIs",
+      "prerequisites": ["dom-manipulation"]
+    }
+  ]
+}

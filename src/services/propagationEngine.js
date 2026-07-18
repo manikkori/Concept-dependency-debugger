@@ -1,6 +1,12 @@
 const THRESHOLD_WEAK = 0.6;
 const THRESHOLD_STRONG = 0.8;
 
+function getStatus(adjustedScore) {
+  if (adjustedScore >= THRESHOLD_STRONG) return "strong";
+  if (adjustedScore >= THRESHOLD_WEAK) return "borderline";
+  return "weak";
+}
+
 function analyzePerformance(studentAnswers, conceptGraph, questionBank) {
   const concepts = conceptGraph.concepts;
   const questions = questionBank.questions;
@@ -63,9 +69,8 @@ function analyzePerformance(studentAnswers, conceptGraph, questionBank) {
     }
 
     // Determine the color/status for the graph UI
-    let status = "weak";
-    if (adjustedScore >= THRESHOLD_STRONG) status = "strong";
-    else if (adjustedScore >= THRESHOLD_WEAK) status = "borderline";
+    // Scores from 0.60 through 0.79 are a distinct, borderline tier.
+    const status = getStatus(adjustedScore);
 
     results[concept.id] = {
       raw: rawScore,

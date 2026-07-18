@@ -22,6 +22,8 @@ const dataStore = {
   "Computer Networks": loadData("networksGraph.json", "networksBank.json"),
   DBMS: loadData("dbmsGraph.json", "dbmsBank.json"),
   "Data Structures": loadData("dsGraph.json", "dsBank.json"),
+  "OOP Concepts": loadData("oopGraph.json", "oopBank.json"),
+  "Web Dev Basics": loadData("webDevGraph.json", "webDevBank.json"),
 };
 
 router.post("/", async (req, res) => {

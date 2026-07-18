@@ -1,0 +1,79 @@
+{
+  "questions": [
+    {
+      "id": "web1",
+      "conceptId": "html-fundamentals",
+      "text": "Which HTML element is used for the largest heading?",
+      "options": ["<h1>", "<head>", "<header>", "<p>"],
+      "correctAnswer": "<h1>"
+    },
+    {
+      "id": "web2",
+      "conceptId": "html-fundamentals",
+      "text": "Which HTML attribute provides alternative text for an image?",
+      "options": ["src", "alt", "href", "title"],
+      "correctAnswer": "alt"
+    },
+    {
+      "id": "web3",
+      "conceptId": "css-fundamentals",
+      "text": "Which CSS property changes the text color of an element?",
+      "options": ["font-style", "color", "background", "text-align"],
+      "correctAnswer": "color"
+    },
+    {
+      "id": "web4",
+      "conceptId": "css-fundamentals",
+      "text": "Which selector targets an element with class 'card'?",
+      "options": ["#card", ".card", "card()", "*card"],
+      "correctAnswer": ".card"
+    },
+    {
+      "id": "web5",
+      "conceptId": "javascript-basics",
+      "text": "Which keyword declares a block-scoped variable that can be reassigned?",
+      "options": ["var", "let", "const", "function"],
+      "correctAnswer": "let"
+    },
+    {
+      "id": "web6",
+      "conceptId": "javascript-basics",
+      "text": "What does the expression 2 === '2' evaluate to in JavaScript?",
+      "options": ["true", "false", "undefined", "2"],
+      "correctAnswer": "false"
+    },
+    {
+      "id": "web7",
+      "conceptId": "dom-manipulation",
+      "text": "Which method selects the first element matching a CSS selector?",
+      "options": [
+        "document.querySelector()",
+        "document.createElement()",
+        "document.appendChild()",
+        "document.getStyle()"
+      ],
+      "correctAnswer": "document.querySelector()"
+    },
+    {
+      "id": "web8",
+      "conceptId": "dom-manipulation",
+      "text": "Which property changes the visible text inside an element?",
+      "options": ["textContent", "nodeName", "tagName", "parentNode"],
+      "correctAnswer": "textContent"
+    },
+    {
+      "id": "web9",
+      "conceptId": "async-js-apis",
+      "text": "What does fetch() return immediately?",
+      "options": ["A Promise", "A string", "A DOM element", "An array"],
+      "correctAnswer": "A Promise"
+    },
+    {
+      "id": "web10",
+      "conceptId": "async-js-apis",
+      "text": "Which keyword pauses an async function until a Promise settles?",
+      "options": ["yield", "await", "defer", "return"],
+      "correctAnswer": "await"
+    }
+  ]
+}
