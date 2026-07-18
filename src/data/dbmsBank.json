@@ -1,0 +1,99 @@
+{
+  "questions": [
+    {
+      "id": "db1",
+      "conceptId": "dbms-basics",
+      "text": "What is data independence in DBMS?",
+      "options": [
+        "Ability to change schema at one level without changing the next",
+        "Data being isolated from users",
+        "Storing data in separate drives",
+        "Executing queries independently"
+      ],
+      "correctAnswer": "Ability to change schema at one level without changing the next"
+    },
+    {
+      "id": "db2",
+      "conceptId": "dbms-basics",
+      "text": "Which level of abstraction describes how data is actually stored?",
+      "options": [
+        "Logical Level",
+        "Physical Level",
+        "View Level",
+        "Conceptual Level"
+      ],
+      "correctAnswer": "Physical Level"
+    },
+    {
+      "id": "db3",
+      "conceptId": "relational-model",
+      "text": "Which key uniquely identifies a row in a table?",
+      "options": ["Foreign Key", "Primary Key", "Candidate Key", "Super Key"],
+      "correctAnswer": "Primary Key"
+    },
+    {
+      "id": "db4",
+      "conceptId": "relational-model",
+      "text": "What is a Foreign Key used for?",
+      "options": [
+        "To uniquely identify a record",
+        "To establish a relationship between two tables",
+        "To encrypt data",
+        "To index a column"
+      ],
+      "correctAnswer": "To establish a relationship between two tables"
+    },
+    {
+      "id": "db5",
+      "conceptId": "sql-joins",
+      "text": "Which SQL JOIN returns all rows from both tables, joining records from the left table which match records from the right table?",
+      "options": ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN"],
+      "correctAnswer": "FULL OUTER JOIN"
+    },
+    {
+      "id": "db6",
+      "conceptId": "sql-joins",
+      "text": "What will an INNER JOIN return if there are no matches between the tables?",
+      "options": [
+        "Null values",
+        "All rows from the left table",
+        "No rows",
+        "An error"
+      ],
+      "correctAnswer": "No rows"
+    },
+    {
+      "id": "db7",
+      "conceptId": "normalization",
+      "text": "What is the primary goal of Normalization?",
+      "options": [
+        "Increase data redundancy",
+        "Reduce data redundancy",
+        "Improve query processing speed",
+        "Encrypt database tables"
+      ],
+      "correctAnswer": "Reduce data redundancy"
+    },
+    {
+      "id": "db8",
+      "conceptId": "normalization",
+      "text": "Which normal form requires removing transitive dependencies?",
+      "options": ["1NF", "2NF", "3NF", "BCNF"],
+      "correctAnswer": "3NF"
+    },
+    {
+      "id": "db9",
+      "conceptId": "transactions",
+      "text": "What does the 'I' in ACID stand for?",
+      "options": ["Integrity", "Isolation", "Index", "Instance"],
+      "correctAnswer": "Isolation"
+    },
+    {
+      "id": "db10",
+      "conceptId": "transactions",
+      "text": "Which property ensures that a transaction is completely executed or not executed at all?",
+      "options": ["Atomicity", "Consistency", "Isolation", "Durability"],
+      "correctAnswer": "Atomicity"
+    }
+  ]
+}

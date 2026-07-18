@@ -1,0 +1,9 @@
+{
+  "concepts": [
+    { "id": "dbms-basics", "name": "DBMS Architecture", "prerequisites": [] },
+    { "id": "relational-model", "name": "Relational Model", "prerequisites": ["dbms-basics"] },
+    { "id": "sql-joins", "name": "SQL & Joins", "prerequisites": ["relational-model"] },
+    { "id": "normalization", "name": "Normalization", "prerequisites": ["sql-joins"] },
+    { "id": "transactions", "name": "Transactions (ACID)", "prerequisites": ["normalization"] }
+  ]
+}

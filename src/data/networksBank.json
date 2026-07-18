@@ -1,0 +1,65 @@
+{
+  "questions": [
+    {
+      "id": "nq1",
+      "conceptId": "osi-model",
+      "text": "Which layer of the OSI model handles logical addressing and routing?",
+      "options": ["Physical", "Data Link", "Network", "Transport"],
+      "correctAnswer": "Network"
+    },
+    {
+      "id": "nq2",
+      "conceptId": "osi-model",
+      "text": "Which layer provides reliable end-to-end data delivery?",
+      "options": ["Application", "Presentation", "Transport", "Data Link"],
+      "correctAnswer": "Transport"
+    },
+    {
+      "id": "nq3",
+      "conceptId": "ip-addressing",
+      "text": "Which of the following is an IPv4 loopback address?",
+      "options": ["192.168.1.1", "127.0.0.1", "10.0.0.1", "255.255.255.255"],
+      "correctAnswer": "127.0.0.1"
+    },
+    {
+      "id": "nq4",
+      "conceptId": "ip-addressing",
+      "text": "How many bits are in an IPv6 address?",
+      "options": ["32 bits", "64 bits", "128 bits", "256 bits"],
+      "correctAnswer": "128 bits"
+    },
+    {
+      "id": "nq5",
+      "conceptId": "routing",
+      "text": "Which protocol is used to find the MAC address from an IP address?",
+      "options": ["ARP", "DHCP", "DNS", "BGP"],
+      "correctAnswer": "ARP"
+    },
+    {
+      "id": "nq6",
+      "conceptId": "routing",
+      "text": "What does a router use to make forwarding decisions?",
+      "options": [
+        "MAC Address Table",
+        "Routing Table",
+        "DNS Cache",
+        "VLAN IDs"
+      ],
+      "correctAnswer": "Routing Table"
+    },
+    {
+      "id": "nq7",
+      "conceptId": "transport-layer",
+      "text": "Which protocol is connection-oriented?",
+      "options": ["UDP", "IP", "TCP", "ICMP"],
+      "correctAnswer": "TCP"
+    },
+    {
+      "id": "nq8",
+      "conceptId": "transport-layer",
+      "text": "Which port is commonly used for HTTP traffic?",
+      "options": ["21", "22", "80", "443"],
+      "correctAnswer": "80"
+    }
+  ]
+}

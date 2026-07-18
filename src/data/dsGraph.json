@@ -1,0 +1,21 @@
+{
+  "concepts": [
+    { "id": "arrays", "name": "Arrays", "prerequisites": [] },
+    {
+      "id": "linked-lists",
+      "name": "Linked Lists",
+      "prerequisites": ["arrays"]
+    },
+    {
+      "id": "stacks-queues",
+      "name": "Stacks & Queues",
+      "prerequisites": ["linked-lists"]
+    },
+    {
+      "id": "trees",
+      "name": "Trees (BST)",
+      "prerequisites": ["stacks-queues"]
+    },
+    { "id": "graphs", "name": "Graphs", "prerequisites": ["trees"] }
+  ]
+}

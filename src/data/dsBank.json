@@ -1,0 +1,104 @@
+{
+  "questions": [
+    {
+      "id": "ds1",
+      "conceptId": "arrays",
+      "text": "What is the time complexity of accessing an element in an array by its index?",
+      "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+      "correctAnswer": "O(1)"
+    },
+    {
+      "id": "ds2",
+      "conceptId": "arrays",
+      "text": "What happens if you try to access an index out of bounds in a static array?",
+      "options": [
+        "Array resizes automatically",
+        "Memory error / Exception is thrown",
+        "Returns null",
+        "Returns 0"
+      ],
+      "correctAnswer": "Memory error / Exception is thrown"
+    },
+    {
+      "id": "ds3",
+      "conceptId": "linked-lists",
+      "text": "What is the main advantage of a linked list over an array?",
+      "options": [
+        "Faster access time",
+        "Dynamic size",
+        "Less memory usage",
+        "Cache friendliness"
+      ],
+      "correctAnswer": "Dynamic size"
+    },
+    {
+      "id": "ds4",
+      "conceptId": "linked-lists",
+      "text": "In a singly linked list, each node contains data and:",
+      "options": [
+        "A pointer to the previous node",
+        "A pointer to the next node",
+        "Two pointers",
+        "A binary value"
+      ],
+      "correctAnswer": "A pointer to the next node"
+    },
+    {
+      "id": "ds5",
+      "conceptId": "stacks-queues",
+      "text": "Which data structure operates on a Last In, First Out (LIFO) principle?",
+      "options": ["Queue", "Tree", "Graph", "Stack"],
+      "correctAnswer": "Stack"
+    },
+    {
+      "id": "ds6",
+      "conceptId": "stacks-queues",
+      "text": "Which operation removes an element from a Queue?",
+      "options": ["Push", "Pop", "Enqueue", "Dequeue"],
+      "correctAnswer": "Dequeue"
+    },
+    {
+      "id": "ds7",
+      "conceptId": "trees",
+      "text": "In a Binary Search Tree (BST), the left child of a node is always:",
+      "options": [
+        "Greater than the node",
+        "Equal to the node",
+        "Less than the node",
+        "Null"
+      ],
+      "correctAnswer": "Less than the node"
+    },
+    {
+      "id": "ds8",
+      "conceptId": "trees",
+      "text": "Which traversal of a BST gives elements in sorted order?",
+      "options": ["Preorder", "Inorder", "Postorder", "Level-order"],
+      "correctAnswer": "Inorder"
+    },
+    {
+      "id": "ds9",
+      "conceptId": "graphs",
+      "text": "Which algorithm is commonly used to find the shortest path in an unweighted graph?",
+      "options": [
+        "Depth First Search (DFS)",
+        "Breadth First Search (BFS)",
+        "Kruskal's",
+        "Merge Sort"
+      ],
+      "correctAnswer": "Breadth First Search (BFS)"
+    },
+    {
+      "id": "ds10",
+      "conceptId": "graphs",
+      "text": "A graph with no cycles is called a:",
+      "options": [
+        "Complete Graph",
+        "Directed Acyclic Graph (DAG) / Tree",
+        "Bipartite Graph",
+        "Cyclic Graph"
+      ],
+      "correctAnswer": "Directed Acyclic Graph (DAG) / Tree"
+    }
+  ]
+}

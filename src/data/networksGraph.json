@@ -1,0 +1,16 @@
+{
+  "concepts": [
+    { "id": "osi-model", "name": "OSI Model", "prerequisites": [] },
+    {
+      "id": "ip-addressing",
+      "name": "IP Addressing",
+      "prerequisites": ["osi-model"]
+    },
+    { "id": "routing", "name": "Routing", "prerequisites": ["ip-addressing"] },
+    {
+      "id": "transport-layer",
+      "name": "Transport Layer",
+      "prerequisites": ["routing"]
+    }
+  ]
+}

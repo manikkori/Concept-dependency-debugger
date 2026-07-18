@@ -3,28 +3,46 @@ const router = express.Router();
 const { analyzePerformance } = require("../services/propagationEngine");
 const { getExplanation } = require("../services/llmExplainer");
 
-const conceptGraph = require("../data/conceptGraph.json");
-const questionBank = require("../data/questionBank.json");
+const loadData = (graphFile, bankFile) => {
+  try {
+    return {
+      graph: require(`../data/${graphFile}`),
+      questions: require(`../data/${bankFile}`),
+    };
+  } catch (error) {
+    return {
+      graph: require("../data/conceptGraph.json"),
+      questions: require("../data/questionBank.json"),
+    };
+  }
+};
+
+const dataStore = {
+  "Discrete Math": loadData("conceptGraph.json", "questionBank.json"),
+  "Computer Networks": loadData("networksGraph.json", "networksBank.json"),
+  DBMS: loadData("dbmsGraph.json", "dbmsBank.json"),
+  "Data Structures": loadData("dsGraph.json", "dsBank.json"),
+};
 
 router.post("/", async (req, res) => {
   try {
-    const { answers } = req.body; // Expecting [{ questionId: 'q1', selected: '...' }]
+    const { answers, subject } = req.body;
+    const currentSubject = subject || "Discrete Math";
+    const subjectData = dataStore[currentSubject] || dataStore["Discrete Math"];
 
-    // 1. Run Propagation Engine
     const { scores, rootWeakConceptId } = analyzePerformance(
       answers,
-      conceptGraph,
-      questionBank,
+      subjectData.graph,
+      subjectData.questions,
     );
 
-    // 2. Run LLM Explanation
     const explanation = await getExplanation(
       scores,
       rootWeakConceptId,
-      conceptGraph,
+      subjectData.graph,
+      currentSubject,
     );
 
-    // 3. Send back unified response
     res.json({
       scores,
       rootWeakConceptId,
