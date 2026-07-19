@@ -86,14 +86,15 @@ function analyzePerformance(studentAnswers, conceptGraph, questionBank) {
     }
   });
 
-  // Fallback: If they passed everything perfectly, return the highest concept
-  if (!rootWeakConceptId) {
-    rootWeakConceptId = "None - All concepts mastered!";
-  }
+  // Mastery is an explicit success state: every adjusted score must be strong.
+  const allMastered = Object.values(results).every(
+    (result) => result.status === "strong",
+  );
 
   return {
     scores: results,
-    rootWeakConceptId: rootWeakConceptId,
+    allMastered,
+    ...(allMastered ? {} : { rootWeakConceptId }),
   };
 }
 

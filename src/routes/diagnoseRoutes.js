@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
     const currentSubject = subject || "Discrete Math";
     const subjectData = dataStore[currentSubject] || dataStore["Discrete Math"];
 
-    const { scores, rootWeakConceptId } = analyzePerformance(
+    const { scores, rootWeakConceptId, allMastered } = analyzePerformance(
       answers,
       subjectData.graph,
       subjectData.questions,
@@ -41,13 +41,15 @@ router.post("/", async (req, res) => {
     const explanation = await getExplanation(
       scores,
       rootWeakConceptId,
+      allMastered,
       subjectData.graph,
       currentSubject,
     );
 
     res.json({
       scores,
-      rootWeakConceptId,
+      allMastered,
+      ...(allMastered ? {} : { rootWeakConceptId }),
       ...explanation,
     });
   } catch (error) {
