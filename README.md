@@ -1,91 +1,166 @@
-# Concept Dependency Debugger
+# Concept Dependency Debugger (CDD)
 
-Concept Dependency Debugger is a full-stack learning diagnostic app. A student takes a subject quiz, then the app evaluates each concept in its prerequisite graph to identify the earliest weak foundation - the root cause - rather than treating every missed advanced question as an independent gap.
+> Most tests tell you what you got wrong. CDD tells you why — tracing failures through a concept dependency graph to find the true root cause.
 
-The graph makes the diagnosis easy to interpret:
+Built for **OpenAI Build Week** (Education track) using **Codex** and **GPT-5.6**.
 
-- **Root cause:** a thick, solid red node with a `ROOT CAUSE` badge.
-- **Affected:** a dashed red node for a downstream weak concept affected by the learning gap.
-- **Borderline:** a yellow node for an adjusted score from 0.60 to 0.79.
-- **Strong:** a green node for an adjusted score of 0.80 or higher.
+**Live demo:** [cdd-openai.vercel.app]
 
-## Tech stack
+---
 
-- **Frontend:** React 19, Vite, Tailwind CSS, React Flow, Lucide React
-- **Backend:** Node.js, Express, CORS, dotenv
-- **AI explanation:** Groq's OpenAI-compatible API via the official `openai` Node SDK
-- **Data:** local JSON concept-dependency graphs and question banks for Discrete Math, Computer Networks, DBMS, Data Structures, OOP Concepts, and Web Dev Basics
+## The Problem
 
-## Prerequisites
+Traditional tests score every topic independently. If a student fails a question on Graphs, the obvious advice is "study Graphs more." But knowledge isn't independent — concepts build on each other in a dependency chain (e.g. `Arrays → Linked Lists → Stacks & Queues → Trees → Graphs`). The real gap is often two or three concepts upstream, quietly breaking everything built on top of it. No standard quiz traces that back.
 
-Install a current Node.js LTS release (Node 20+ recommended) and npm. A Groq API key is optional: the diagnosis endpoint still returns a fallback explanation if one is not configured, but AI-generated explanations require it.
+## What CDD Does
 
-## Environment variables
+CDD models a subject as a **concept dependency graph** and runs a student's quiz results through a **propagation engine** that traces weaknesses upstream instead of scoring each topic in isolation.
 
-Create `backend/.env` with the following value when AI explanations are desired:
+- If a student scores well on a downstream topic but the prerequisite underneath it is weak, CDD does **not** take that score at face value — it flags it as unreliable and traces back to the true root cause.
+- The root cause is visually distinguished on a live dependency graph from its downstream, cascading effects.
+- A **"Show the math" transparency panel** exposes the exact raw-vs-adjusted score and the reasoning behind every adjustment — the diagnosis is fully explainable, not a black box.
+- GPT-5.6 converts the structured diagnosis into a clear, encouraging explanation with a concrete next step.
 
-```env
-GROQ_API_KEY=your_groq_api_key
+Currently covers six subjects: **Data Structures, Math, DBMS, Computer Networks, OOP, and Web Development.**
+
+---
+
+## How Codex Was Used
+
+Codex was used throughout implementation to iterate directly on the existing codebase, working across both frontend and backend to keep changes consistent. Specific contributions include:
+
+- Implementing the **root-cause visualization system** — distinguishing the root-cause node (thick border + badge) from downstream affected nodes (dashed border + label) on the React Flow dependency graph
+- Fixing the **borderline scoring tier**, which was mathematically unreachable at the original thresholds given a 2-questions-per-concept design, and realigning it to the actual achievable score values
+- Building the **"Show the math" transparency panel** — a per-concept raw-vs-adjusted score breakdown with reasoning
+- Extending the propagation engine to **two additional subject chains** (OOP Concepts, Web Dev Basics), each with a full 10-question bank matching the existing schema
+- Redesigning the **landing page** — new typography system, color tokens tied to the app's own diagnostic color language, and a signature animated dependency-graph preview in the hero section
+- Implementing a **consistent dark/light theme system** across the entire app (landing page + in-app pages), while keeping the graph's functional status colors (strong/borderline/weak) intentionally independent of the general theme tokens
+- Fixing a **dark-mode visibility regression** where graph node status colors were incorrectly overridden by global theme tokens
+- Building a dedicated **"all concepts mastered" success state**, replacing a broken fallback that reused warning-style UI for a positive outcome
+- Migrating the diagnosis API integration to use **OpenAI's GPT-5.6** directly
+- Generating and refining this README
+
+## How GPT-5.6 Is Used
+
+GPT-5.6 sits specifically at the **explanation layer** of the product — it does not determine the diagnosis itself. Root-cause identification is handled by a deterministic propagation engine (see below), which guarantees the diagnosis is consistent, traceable, and explainable rather than dependent on a language model's reasoning.
+
+Once the propagation engine identifies the root weak concept and computes adjusted scores, GPT-5.6 (`gpt-5.6-luna`) receives the structured result — the concept dependency chain, per-concept raw/adjusted scores, and the identified root cause — and generates:
+
+1. **Diagnosis** — a plain-English statement of the student's actual weak point
+2. **Why It Matters** — why this specific gap causes downstream failures
+3. **Next Step** — one concrete, actionable recommendation
+
+This separation is intentional: the *what* (root cause) is deterministic and auditable; the *how to explain it* (tone, clarity, actionability) is where GPT-5.6 adds value.
+
+---
+
+## The Propagation Engine
+
+The core technical piece of CDD is a lightweight, fully explainable scoring algorithm — not a black-box model:
+
+1. Each concept gets a **raw score** from its quiz questions.
+2. Concepts are processed in **dependency order** (prerequisites first).
+3. For each concept, if any prerequisite's adjusted score falls below the mastery threshold, the current concept's score is **capped** at its weakest prerequisite's adjusted score — a downstream "pass" is treated as unreliable if the foundation under it is shaky.
+4. The **root weak concept** is the most upstream concept whose adjusted score falls below threshold — not necessarily the concept the student did worst on.
+5. Every node is classified **strong / borderline / weak**, and every adjustment is logged with a plain-English reason, shown in the "Show the math" panel.
+
+---
+
+## Tech Stack
+
+- **Frontend:** React (Vite), Tailwind CSS, React Flow (dependency graph visualization)
+- **Backend:** Node.js, Express
+- **AI:** OpenAI API — `gpt-5.6-luna`
+- **Fonts:** JetBrains Mono (headings/labels/data), Manrope (body copy)
+
+---
+
+## Project Structure
+
+```
+concept-dependency-debugger/
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── components/
+│   │   │   ├── QuizFlow.jsx
+│   │   │   ├── ConceptGraphView.jsx
+│   │   │   ├── DiagnosisPanel.jsx
+│   │   │   └── ...
+│   │   └── App.css
+│   ├── package.json
+├── backend/
+│   ├── src/
+│   │   ├── index.js
+│   │   ├── data/
+│   │   │   ├── conceptGraph.json
+│   │   │   └── questionBank.json
+│   │   ├── routes/
+│   │   │   ├── quiz.js
+│   │   │   └── diagnose.js
+│   │   ├── services/
+│   │   │   ├── propagationEngine.js
+│   │   │   └── diagnosisExplainer.js
+│   ├── package.json
+│   └── .env.example
+└── README.md
 ```
 
-The frontend can use this optional variable in `frontend/.env` when the API is hosted somewhere other than the local backend:
+*(Adjust this tree to match your actual file layout before submitting.)*
 
-```env
-VITE_API_BASE_URL=http://localhost:5000
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- An OpenAI API key with access to GPT-5.6
+
+### 1. Clone the repo
+```bash
+git clone [https://github.com/manikkori/Concept-dependency-debugger-frontend-]
+cd concept-dependency-debugger
 ```
 
-If `VITE_API_BASE_URL` is omitted, the frontend defaults to `http://localhost:5000`.
+### 2. Backend setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+```
+Add your OpenAI API key to `.env`:
+```
+OPENAI_API_KEY=your_key_here
+```
+Start the backend:
+```bash
+npm start
+```
+Backend runs on `http://localhost:[5000]` by default.
 
-## Setup and run
+### 3. Frontend setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend runs on `http://localhost:5173` by default (Vite's default port).
 
-1. Clone the repository and enter the project directory.
+### 4. Try it out
+Open the frontend URL in your browser, pick a subject, and take the diagnostic quiz.
 
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
+---
 
-2. Install backend dependencies.
+## What's Next
 
-   ```bash
-   cd backend
-   npm install
-   ```
+- Larger per-concept question banks for finer-grained scoring
+- A teacher/faculty view for classroom-wide diagnostics
+- An adaptive quiz mode that focuses follow-up questions on suspected weak areas in real time
 
-3. Create `backend/.env` and add `GROQ_API_KEY` if you want AI-generated explanations.
+---
 
-4. Start the backend from the `backend` directory.
+## Team
 
-   ```bash
-   node src/index.js
-   ```
+Manik Kori
 
-   The API listens on `http://localhost:5000` by default. Set `PORT` in `backend/.env` to use another port.
-
-5. In a second terminal, install and start the frontend.
-
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-
-6. Open the local URL printed by Vite (normally `http://localhost:5173`), choose a subject, and start an assessment.
-
-## Available API endpoints
-
-- `GET /` - backend health message
-- `GET /api/quiz?subject=<subject>` - graph and question data for a subject
-- `POST /api/diagnose` - scores answers, propagates prerequisite effects, and returns the root cause plus explanation
-
-## Scoring behavior
-
-Each concept first receives a raw score from its quiz answers. The backend processes the prerequisite graph from foundations to advanced concepts; when a prerequisite is weak, it caps an otherwise lucky downstream score so the displayed adjusted score reflects the dependency chain.
-
-Adjusted scores are categorized as follows:
-
-| Range | Status | Graph color |
-| --- | --- | --- |
-| Below 0.60 | Weak | Red |
-| 0.60-0.79 | Borderline | Yellow |
-| 0.80-1.00 | Strong | Green |
+Built with Codex, July 2026.
